@@ -1,8 +1,8 @@
 
 class DbConfiguration:
 
-    ENGINE = 'django.db.backends.postgresql',
-    NAME = 'blog',
-    USER = 'blogadmin',
-    PASSWORD = '1234',
-    PORT: '5432'
+    ENGINE:str = 'django.db.backends.postgresql',
+    NAME: str = 'blog',
+    USER: str = 'blogadmin',
+    PASSWORD: str = '1234',
+    PORT: str = '5432'

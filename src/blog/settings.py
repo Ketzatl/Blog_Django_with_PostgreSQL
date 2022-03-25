@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-from src.configuration import db_configuration
+#from src.configuration import db_configuration
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -78,12 +78,12 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': db_configuration.DbConfiguration.ENGINE,
-        'NAME': db_configuration.DbConfiguration.NAME,
-        'USER': db_configuration.DbConfiguration.USER,
-        'PASSWORD': db_configuration.DbConfiguration.PASSWORD,
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'blog',
+        'USER': 'blogadmin',
+        'PASSWORD': '1234',
         'HOST': '127.0.0.1',
-        'PORT': db_configuration.DbConfiguration.PORT
+        'PORT': '5432'
     }
 }
 
@@ -110,7 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fr-fr'
 
 TIME_ZONE = 'UTC'
 

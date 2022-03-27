@@ -32,8 +32,5 @@ class BlogPost(models.Model):
     def author_or_default(self):
         return self.author.username if self.author else "Anonyme"
 
-
     def get_absolute_url(self):
         return reverse('posts:home')
-
-

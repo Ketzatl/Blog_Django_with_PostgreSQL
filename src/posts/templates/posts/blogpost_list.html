@@ -1,17 +1,29 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    <title>{{ title }}</title>
+    <title>Home Page</title>
 {% endblock %}
 
 {% block content %}
 
-    <h1>Le Blog de Morgan</h1>
+    <h1>Nantes IT Events Blog</h1>
     {% for post in posts %}
         <article>
             <h2>{{ post.title }}</h2>
-            <h5>Publié par <i>{{ post.author_or_default }}</i> le {{ post.created_on|date:'j F Y' }}</h5>
+
+            {% if request.user.is_authenticated %}
+            <div>
+                <a href="{% url 'posts:edit' slug=post.slug %}">Edit</a>
+                <a href="{% url 'posts:delete' slug=post.slug %}">Delete</a>
+            </div>
+            {%endif%}
+            
+            <h5>Published by <i>{{ post.author_or_default }}</i>, {{ post.created_on|date:'j F Y' }}</h5>
             <p>{{  post.content|truncatewords:50 }}</p>
+
+            <form action="{% url 'posts:post' slug=post.slug %}">
+                <button>See More...</button>
+            </form>
         </article>
     {% endfor %}
 

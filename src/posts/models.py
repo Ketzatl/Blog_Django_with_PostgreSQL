@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.template.defaultfilters import slugify
 from django.db import models
+from django.urls import reverse
 
 User = get_user_model()
 
@@ -26,3 +27,12 @@ class BlogPost(models.Model):
             self.slug = slugify(self.title)
 
         super().save(*args, **kwargs)
+
+    @property
+    def author_or_default(self):
+        return self.author.username if self.author else "Anonyme"
+
+    def get_absolute_url(self):
+        return reverse('posts:home')
+
+

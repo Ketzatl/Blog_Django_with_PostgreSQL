@@ -1,31 +1,33 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    <title>Home Page</title>
+<title>Home Page</title>
 {% endblock %}
 
 {% block content %}
 
-    <h1>Nantes IT Events Blog</h1>
-    {% for post in posts %}
-        <article>
-            <h2>{{ post.title }}</h2>
+<h1>Nantes IT Events Blog</h1>
+{% for post in posts %}
+<article>
 
-            {% if request.user.is_authenticated %}
-            <div>
-                <a href="{% url 'posts:edit' slug=post.slug %}">Edit</a>
-                <a href="{% url 'posts:delete' slug=post.slug %}">Delete</a>
-            </div>
-            {%endif%}
-            
-            <h5>Published by <i>{{ post.author_or_default }}</i>, {{ post.created_on|date:'j F Y' }}</h5>
-            <p>{{  post.content|truncatewords:50 }}</p>
+    <div class="post-title">
+        <h2>{{ post.title }}</h2>
+        {% if request.user.is_authenticated %}
+        <div>
+            <a href="{% url 'posts:edit' slug=post.slug %}">Edit</a>
+            <a href="{% url 'posts:delete' slug=post.slug %}">Delete</a>
+        </div>
+        {%endif%}
+    </div>
 
-            <form action="{% url 'posts:post' slug=post.slug %}">
-                <button>See More...</button>
-            </form>
-        </article>
-    {% endfor %}
+    <h5 class="post-author">Published by <i>{{ post.author_or_default }}</i>, {{ post.created_on|date:'j F Y' }}</h5>
+    <p class="post-excerpt">{{ post.content|truncatewords:50 }}</p>
+
+    <form action="{% url 'posts:post' slug=post.slug %}">
+        <button class="btn btn-submit">See More...</button>
+    </form>
+</article>
+{% endfor %}
 
 {% endblock %}
 

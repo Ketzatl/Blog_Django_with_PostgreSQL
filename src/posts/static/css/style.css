@@ -10,6 +10,12 @@ nav {
     display: flex;
     justify-content: space-between;
 }
+nav a {
+    text-decoration: none;
+    color: black;
+    font-size: 1rem;
+    font-weight: bolder;
+}
 
 #blog {
     display: flex;
@@ -35,6 +41,7 @@ nav {
 }
 .post-title > div {
     margin-left: auto;
+    font-weight: bolder;
 }
 .post-author {
     margin: .5rem 0;
@@ -46,6 +53,11 @@ nav {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+.post-picture {
+    width: 100%;
+    height: auto;
+    margin-bottom: 0.75rem;
 }
 .post-detail > h1 {
     text-transform: uppercase;

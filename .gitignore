@@ -1,4 +1,4 @@
 .env/
 .idea/
-.src/configuration/*
-.src/blog/*
+src/configuration/db_configuration.py
+src/blog/.env
